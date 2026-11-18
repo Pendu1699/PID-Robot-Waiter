@@ -74,7 +74,7 @@ hardware/   Wiring diagrams, schematics, power system
 ## Team
 
 - Angad Singh ([@Pendu1699](https://github.com/Pendu1699))
-- *(add your name here)*
+- Aditya Lolam ([@adi2098](https://github.com/adi2098))
 
 ## License
 
