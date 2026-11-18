@@ -1,6 +1,6 @@
 # PID-Robot-Waiter
 
-A Raspberry Pi–controlled robot waiter: an omnidirectional mecanum base, a support mast,
+A Raspberry Pi–controlled robot waiter for a mock restaurant: customers order from an app, the chef marks the order ready, and the robot follows a taped path to collect the plate and deliver it to the table. It has an omnidirectional mecanum base, a support mast,
 and a 5-DOF robotic arm whose wrist uses IMU feedback and PID control to keep a plate level
 while the robot moves.
 
@@ -51,22 +51,27 @@ See [`docs/serial-protocol.md`](docs/serial-protocol.md).
 ```
 docs/       Design notes, calculations, parts list, serial protocol
 firmware/   ESP32 code (PlatformIO / Arduino): PID, IMU, motors, joints
-pi/         Raspberry Pi Python code: UI, navigation, kinematics, serial link
+pi/         Raspberry Pi Python code: navigation, kinematics, serial link
+server/     Ordering app backend (FastAPI): customer page, chef dashboard, robot jobs
+ml/         Plate / obstacle detection training (YOLO)
 cad/        Mechanical CAD (arm links, gearboxes, mast, base)
 hardware/   Wiring diagrams, schematics, power system
 ```
 
 ## Roadmap
 
-1. **Mecanum base:** drive smoothly with remote control and wheel speed PID
-2. **Levelling bench test:** IMU + 2 wrist servos on a desk and a PID that holds a plate level when tilted by hand
-3. **Arm:** build the base, shoulder and elbow with geared steppers, plus joint homing and manual jogging
-4. **Integrate:** arm on mast on base, levelling active while driving
-5. **Serving logic:** Pi UI to send the robot to a table
-6. *(Stretch)* Pick-and-place with inverse kinematics
+1. **Mecanum base** *(in progress)*: drive smoothly with wheel speed PID, then line following with an IR array
+2. **Tape-graph navigation:** NFC tags at nodes, route planning on the Pi, send the robot to "Table 3" from a terminal
+3. **Ordering app:** FastAPI backend, customer QR-code ordering page, chef dashboard, and the "Ready" button dispatches the robot
+4. **Arm + levelling:** geared-stepper arm, IMU wrist levelling PID, pickup from a fixed station
+5. **Camera + ML:** YOLO plate detection at the pickup station (ArUco-assisted), obstacle/person detection
+6. **Full demo:** a UQ study room set up as a mock restaurant
+
+Full plan: [`docs/system-plan.md`](docs/system-plan.md)
 
 ## Docs
 
+- [System plan: ordering app, navigation, ML](docs/system-plan.md)
 - [Design notes & torque calculations](docs/design-notes.md)
 - [Parts list](docs/parts-list.md)
 - [Serial protocol (Pi ↔ ESP32)](docs/serial-protocol.md)

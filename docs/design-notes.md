@@ -73,4 +73,6 @@ Braking and turning multiply this several times, so:
 - [ ] Carry-and-level only, or full pick-and-place? (pick-and-place needs IK + better accuracy)
 - [ ] Battery voltage: 12 V or 24 V system?
 - [ ] Mast: fixed height or telescoping?
-- [ ] Navigation: remote control, line following, or markers (ArUco) + camera?
+- [x] Navigation: black-tape line following + NFC-tagged nodes (see [system-plan.md](system-plan.md))
+- [ ] Node identification: NFC tags or ArUco markers?
+- [ ] Backend link: WebSocket or MQTT?
