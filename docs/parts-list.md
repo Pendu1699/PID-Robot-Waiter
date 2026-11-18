@@ -7,7 +7,7 @@ AliExpress) and fill in as you buy.
 
 | Qty | Part | Notes |
 |---|---|---|
-| 1 | Raspberry Pi 5 | High-level control, route planning, ML inference (Pi 5 recommended for YOLO) |
+| 1 | Raspberry Pi 4 (8 GB) ✅ owned | High-level control, route planning, ML inference |
 | 1 | ESP32 dev board | Real-time PID, motors, joints |
 | 1 | IMU (BNO085 or MPU-6050) | On end effector. BNO085 has onboard sensor fusion |
 | 1 | Pi Camera Module 3 | Plate detection, ArUco markers, obstacle detection |

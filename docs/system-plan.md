@@ -82,7 +82,7 @@ stay rule-based.
 | **Obstacle / person detection** | The same kind of detector. Stop or slow when someone crosses the path | Safety feature |
 | Dish verification | Classify the plate and check it matches the order | Optional |
 
-**Hardware:** Pi 5 + camera module. An AI accelerator HAT is optional, for faster inference.
+**Hardware:** Pi 4 (8 GB, already owned) + camera module. Expect a few FPS for a small YOLO model at low resolution, which is fine for a plate sitting still at the pickup station. An AI accelerator HAT is optional, for faster inference.
 
 **Make pickup easy for the robot:**
 
