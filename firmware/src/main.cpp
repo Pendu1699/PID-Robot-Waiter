@@ -1,4 +1,4 @@
-// ESP32 firmware: levelling bench test (roadmap step 2)
+// ESP32 firmware: levelling bench test
 // IMU on the end effector -> two PID loops -> wrist pitch & roll servos.
 // TODO: replace readImu() with the real IMU driver (BNO085 / MPU-6050).
 
