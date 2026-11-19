@@ -2,15 +2,19 @@
 
 Built with [PlatformIO](https://platformio.org/) (VS Code extension).
 
-```
+From the repository root:
+
+```sh
+cd firmware
+pio run               # build without flashing
 pio run -t upload     # build + flash
 pio device monitor    # serial monitor at 115200
 ```
 
 ## Current state
 
-`src/main.cpp` is the **levelling bench test** (roadmap step 2): IMU, two PID loops and
-the wrist pitch/roll servos. The IMU read is a placeholder for now.
+`src/main.cpp` is the **levelling bench test**. It targets a 250 Hz loop for the wrist pitch and roll servos.
+The IMU stub returns zero on both axes. Fit and implement the sensor before tuning gains against actual tilt.
 
 ## Tuning the levelling PID
 
