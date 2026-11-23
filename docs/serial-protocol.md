@@ -3,7 +3,14 @@
 Plain-text, newline-terminated ASCII so it's easy to debug from a serial monitor.
 115200 baud to start, increase later if needed.
 
-## Pi → ESP32 (commands)
+## Current bench firmware
+
+The ESP32 accepts `L` and `K` and ignores the other commands below. It sends
+`T pitch roll` about 20 times per second. Both values are in degrees and read
+zero with the current IMU stub. `L 0` pauses PID updates and leaves the servos
+at their last commanded positions.
+
+## Planned command set (Pi → ESP32)
 
 | Command | Meaning | Example |
 |---|---|---|
@@ -14,14 +21,14 @@ Plain-text, newline-terminated ASCII so it's easy to debug from a serial monitor
 | `H` | Home arm joints | `H` |
 | `S` | Stop everything | `S` |
 
-## ESP32 → Pi (telemetry, ~20 Hz)
+## Planned telemetry format (ESP32 → Pi)
 
 ```
 T pitch roll j1 j2 j3 j4 j5 battV
 ```
 Example: `T 0.4 -0.2 0 45 -30 1.2 0.3 15.8`
 
-## Safety
+## Planned stop behaviour
 
-- The ESP32 stops the base if no command arrives for 250 ms (watchdog)
-- The `S` command and the hardware E-stop always win
+- The drive firmware must stop the base if no command arrives for 250 ms (watchdog)
+- The `S` command and the hardware E-stop must take priority over motion commands

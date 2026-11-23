@@ -1,6 +1,6 @@
 # PID-Robot-Waiter
 
-A Raspberry Pi–controlled robot waiter for a mock restaurant: customers order from an app, the chef marks the order ready, and the robot follows a taped path to collect the plate and deliver it to the table. It has an omnidirectional mecanum base, a support mast,
+A Raspberry Pi–controlled robot waiter for a mock restaurant: customers order from an app, the chef marks the order ready, and the robot follows a taped path to collect the plate and deliver it to the table. The design calls for an omnidirectional mecanum base, a support mast,
 and a 5-DOF robotic arm whose wrist uses IMU feedback and PID control to keep a plate level
 while the robot moves.
 
@@ -18,7 +18,7 @@ while the robot moves.
 | Levelling | IMU on the end effector → PID on wrist pitch & roll |
 | Brains | Raspberry Pi (high level) + ESP32 (real-time control) |
 
-## System architecture
+## Planned system architecture
 
 ```mermaid
 flowchart LR
@@ -46,17 +46,15 @@ The ESP32 runs every time-critical loop (IMU, PID, motors) at a fixed rate. The 
 high-level commands ("drive at this velocity", "move arm to this pose") over serial.
 See [`docs/serial-protocol.md`](docs/serial-protocol.md).
 
-## Repository layout
+## Repository guide
 
-```
-docs/       Design notes, calculations, parts list, serial protocol
-firmware/   ESP32 code (PlatformIO / Arduino): PID, IMU, motors, joints
-pi/         Raspberry Pi Python code: navigation, kinematics, serial link
-server/     Ordering app backend (FastAPI): customer page, chef dashboard, robot jobs
-ml/         Plate / obstacle detection training (YOLO)
-cad/        Mechanical CAD (arm links, gearboxes, mast, base)
-hardware/   Wiring diagrams, schematics, power system
-```
+| Directory | What you can find today |
+|---|---|
+| [Firmware](firmware/) | ESP32 wrist bench test and PID controller. The IMU currently reports zero tilt. |
+| [Raspberry Pi](pi/) | Python serial client for sending commands and reading telemetry. |
+| [Design docs](docs/) | System plan, torque calculations, parts list and serial protocol. |
+| [Server](server/) and [ML](ml/) | Plans for the ordering app and plate detection. |
+| [CAD](cad/) and [hardware](hardware/) | CAD file conventions and the draft power diagram. |
 
 ## Roadmap
 

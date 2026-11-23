@@ -1,14 +1,18 @@
 # Raspberry Pi code
 
-High-level control: UI, navigation, arm kinematics, and the serial link to the ESP32.
+The [serial client](waiter/serial_link.py) prints telemetry from the ESP32. From the
+repository root on the Pi, connect the ESP32 over USB and run:
 
+```sh
+cd pi
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m waiter.serial_link /dev/ttyUSB0
 ```
-pip install -r requirements.txt
-python -m waiter.serial_link /dev/ttyUSB0   # prints ESP32 telemetry
-```
 
-Planned modules:
+Use the serial port assigned to your board. The current firmware sends pitch and roll
+in degrees. See the [serial protocol](../docs/serial-protocol.md) for supported commands.
 
-- `waiter/serial_link.py`: talks to the ESP32 (see `docs/serial-protocol.md`)
-- `waiter/kinematics.py`: arm forward/inverse kinematics
-- `waiter/ui/`: web or phone control page
+Navigation and arm kinematics are planned. The ordering UI is described in the
+[system plan](../docs/system-plan.md).
